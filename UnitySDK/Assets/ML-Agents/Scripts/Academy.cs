@@ -118,6 +118,14 @@ namespace MLAgents
         EnvironmentConfiguration inferenceConfiguration =
             new EnvironmentConfiguration(1280, 720, 5, 1.0f, 60);
 
+        [SerializeField]
+        [Tooltip("Whether to apply the engine-level settings during Inference.")]
+        bool applyInferenceConfiguration = false;
+
+        [SerializeField]
+        [Tooltip("Whether to show the training debug monitor")]
+        private bool showMonitor = true;
+
         /// <summary>
         /// Contains a mapping from parameter names to float values. They are
         /// used in <see cref="AcademyReset"/> and <see cref="AcademyStep"/>
@@ -375,14 +383,17 @@ namespace MLAgents
         {
             if (isInference)
             {
-                ConfigureEnvironmentHelper(inferenceConfiguration);
-                Monitor.SetActive(true);
+                if (applyInferenceConfiguration)
+                {
+                    ConfigureEnvironmentHelper(inferenceConfiguration);
+                }
             }
             else
             {
                 ConfigureEnvironmentHelper(trainingConfiguration);
-                Monitor.SetActive(false);
             }
+
+            Monitor.SetActive(showMonitor);
         }
 
         /// <summary>
