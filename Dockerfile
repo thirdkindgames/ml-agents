@@ -129,4 +129,7 @@ RUN pip install .
 # port 5005 is the port used in in Editor training.
 EXPOSE 5005
 
+# port 6006 is the port used to expose the tensorboard web dashboard.
+EXPOSE 6006
+
 ENTRYPOINT ["mlagents-learn"]

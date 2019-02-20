@@ -1,3 +1,5 @@
 @echo off
 pushd "%~dp0"
-docker build -t blockparty .
+
+rem Build the training server
+docker build -t mlagent-training .

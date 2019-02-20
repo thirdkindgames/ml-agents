@@ -8,5 +8,11 @@ if "%~1"=="" (
     exit /b -1
 )
 
+rem Stop and remove any previous training sessions
+echo Stopping any previous runs...
+docker stop mlagent-training >nul 2>&1
+docker rm mlagent-training >nul 2>&1
+
 rem Run training
-docker run --mount type=bind,source="%cd%"/unity-volume,target=/unity-volume -p 5005:5005 blockparty:latest --docker-target-name=unity-volume trainer_config.yaml --train --run-id=%1
+echo Running training...
+docker run --name "mlagent-training" --mount type=bind,source="%cd%"/unity-volume,target=/unity-volume -p 5005:5005 mlagent-training:latest --docker-target-name=unity-volume trainer_config.yaml --train --run-id=%1
