@@ -22,5 +22,5 @@ if "%~1"=="start" (
     rem Run the monitor
     echo Running training monitor...
     echo Once the server is running, navigate to http://localhost:6006 to view the dashboard...
-    start docker run --name "mlagent-training-monitor" --mount type=bind,source="%cd%"/unity-volume,target=/unity-volume -p 6006:6006 --entrypoint="tensorboard" mlagent-training:latest --docker-target-name=unity-volume --logdir=/unity-volume/summaries
+    start docker run --name "mlagent-training-monitor" --mount type=bind,source="%cd%"/unity-volume,target=/unity-volume -p 6006:6006 --entrypoint="tensorboard" thirdkindgames/mlagent-training:latest --docker-target-name=unity-volume --logdir=/unity-volume/summaries
 )
