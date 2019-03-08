@@ -67,6 +67,8 @@ namespace MLAgents
         static GUIStyle[] colorStyle;
         static bool initialized;
 
+        static public bool IsInitialised => initialized;
+
         /// <summary>
         /// Use the Monitor.Log static function to attach information to a transform.
         /// </summary>
