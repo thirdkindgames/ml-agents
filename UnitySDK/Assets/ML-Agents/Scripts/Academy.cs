@@ -351,6 +351,7 @@ namespace MLAgents
             isInference = !isCommunicatorOn;
 
             BrainDecideAction += () => { };
+            DestroyAction += () => { };
             AgentSetStatus += (m, d, i) => { };
             AgentResetIfDone += () => { };
             AgentSendState += () => { };
